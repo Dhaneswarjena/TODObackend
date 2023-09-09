@@ -1,8 +1,8 @@
-import Jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 export const sendcookies=(res,user,message,statuscode=200)=>{
     
-  const token=Jwt.sign({_id:user._id},process.env.JWT_SCREET)
-   res.status(statuscode).cookie('token',{Jwt:token},{
+  const token=jwt.sign({_id:user._id},process.env.JWT_SCREET)
+   res.status(statuscode).cookie('token',token,{
     httpOnly:true,
     maxAge:15*60*1000,
     sameSite:process.env.NODE_ENV==="Development"?"lax":"none",

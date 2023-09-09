@@ -1,5 +1,5 @@
 import { User } from "../models/user.js"
-import Jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 export const auth=async(req,res,next)=>{
     const {token}=req.cookies
     if(!token){
@@ -8,7 +8,7 @@ export const auth=async(req,res,next)=>{
             message:"login first"
         })
     }
-    const decode=Jwt.verify(token,process.env.JWT_SCREET)
-    req.user=await User.findById(decode._id)
-    next();
+    const decode=jwt.verify(token,process.env.JWT_SCREET)
+    req.user=await User.findById(decode._id) 
+    next()
 }
