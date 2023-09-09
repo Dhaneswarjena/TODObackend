@@ -20,7 +20,7 @@ app.use(
     })
   );
   app.use("/api/v1/users",userouter)
-  app.use("/api/v1/task",Taskrouter)
+  app.use("/api/v1/users/task",Taskrouter)
 app.get('/',(req,res)=>{
     res.send('Nice working')
 })
